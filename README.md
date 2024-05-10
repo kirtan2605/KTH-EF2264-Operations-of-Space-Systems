@@ -7,11 +7,11 @@ The requirements to setup the virtual enviroment can be installed using 'pip' an
 
 
 The requirements.txt file has been obtained using
-'''bash
+```bash
 pip freeze > requirements.txt
-'''
+```
 
 These can be used to set-up the necessary virtual environment using
-'''bash
+```bash
 pip install -r requirements.txt
-'''
+```
