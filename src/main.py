@@ -1,12 +1,13 @@
 import numpy as np
 from math import radians, pi
 import matplotlib.pyplot as plt
-#from mayavi import mlab
+from mayavi import mlab
+from tvtk.api import tvtk # python wrappers for the C++ vtk ecosystem
 
 # %% initialize Orekit : start up the java engine and expose the orekit classes in python.
 import orekit
 vm = orekit.initVM()
-from orekit.pyhelpers import setup_orekit_capurdir
+from orekit.pyhelpers import setup_orekit_curdir
 setup_orekit_curdir()
 from org.orekit.frames import FramesFactory, TopocentricFrame
 from org.orekit.bodies import OneAxisEllipsoid, GeodeticPoint
@@ -17,6 +18,7 @@ from org.orekit.propagation.analytical.tle import TLE, TLEPropagator
 ## Check Orekit installations
 #print ('Java version:',vm.java_version)
 #print ('Orekit version:', orekit.VERSION)
+earth_radius = Constants.WGS84_EARTH_EQUATORIAL_RADIUS  # in kilometers
 
 
 # %% import custom functions
@@ -34,7 +36,7 @@ for i in range(0, num_rows-1, 2):
     # TLEs is thus a list of 'org.orekit.propagation.analytical.tle.TLE' objects
 
 # shortening TLE list for initial trials, updating num_rows
-TLEs = TLEs[1:5]
+TLEs = TLEs[1:50]
 num_rows = len(TLEs)*2
 
 
@@ -83,6 +85,7 @@ for j in range(0, (num_rows//2)-1, 1):
         extrapDate = extrapDate.shiftedBy(10.0)
 
 #Constants.WGS84_EARTH_EQUATORIAL_RADIUS
+
 '''
 # %% Plot Results
 plt.plot(el)
@@ -92,27 +95,43 @@ plt.grid(True)
 plt.show()
 '''
 
-# Create latitude and longitude grids
-lats = np.linspace(-90, 90, 181)
-lons = np.linspace(-180, 180, 361)
-LATS, LONS = np.meshgrid(lats, lons)
-# Define the radius of the Earth
-radius = Constants.WGS84_EARTH_EQUATORIAL_RADIUS  # in kilometers??
-# Convert latitude and longitude to 3D Cartesian coordinates
-x = radius * np.cos(np.radians(LATS)) * np.cos(np.radians(LONS))
-y = radius * np.cos(np.radians(LATS)) * np.sin(np.radians(LONS))
-z = radius * np.sin(np.radians(LATS))
 
+
+
+
+# Create a new Mayavi figure
+fig = mlab.figure()
+
+# %% Plot the Earth surface
+image_file = 'datafiles/blue_marble.jpg'
+# load and map the texture
+img = tvtk.JPEGReader()
+img.file_name = image_file
+texture = tvtk.Texture(input_connection=img.output_port, interpolate=1)
+# (interpolate for a less raster appearance when zoomed in)
+# use a TexturedSphereSource, a.k.a. getting our hands dirty
+Nrad = 180
+# create the sphere source with a given radius and angular resolution
+sphere = tvtk.TexturedSphereSource(radius = earth_radius, theta_resolution=Nrad, phi_resolution=Nrad)
+# assemble rest of the pipeline, assign texture
+sphere_mapper = tvtk.PolyDataMapper(input_connection=sphere.output_port)
+sphere_actor = tvtk.Actor(mapper=sphere_mapper, texture=texture)
+fig.scene.add_actor(sphere_actor)
+
+# %% Plot the orbit
 # extract position data
 x_orbit = [point[0] for point in pos]
 y_orbit = [point[1] for point in pos]
 z_orbit = [point[2] for point in pos]
 
-# Create a new Mayavi figure
-#fig = mlab.figure()
-# Plot the surface
-#surface = mlab.mesh(x, y, z, colormap='viridis')
-# Plot the line
-#line = mlab.plot3d(x_orbit, y_orbit, z_orbit, color=(1, 0, 0), tube_radius=None)
+# Generate scalar values for each point on the line
+scalar_values = np.linspace(0, 1, len(x_orbit))  # Example: Linearly varying scalar values from 0 to 1
+
+line = mlab.plot3d(x_orbit, y_orbit, z_orbit, color = (1,0,0), tube_radius = None)
+
+# Add a colorbar to the plot
+#colorbar = mlab.colorbar()
+
+
 # Display the plot
-#mlab.show()
+mlab.show()
