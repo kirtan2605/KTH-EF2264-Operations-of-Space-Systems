@@ -1,7 +1,8 @@
-
+import numpy as np
 from math import radians, pi
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+from mayavi import mlab
+from tvtk.api import tvtk # python wrappers for the C++ vtk ecosystem
 
 # %% initialize Orekit : start up the java engine and expose the orekit classes in python.
 import orekit
@@ -17,7 +18,7 @@ from org.orekit.propagation.analytical.tle import TLE, TLEPropagator
 ## Check Orekit installations
 #print ('Java version:',vm.java_version)
 #print ('Orekit version:', orekit.VERSION)
-#print (Constants.WGS84_EARTH_EQUATORIAL_RADIUS)
+earth_radius = Constants.WGS84_EARTH_EQUATORIAL_RADIUS  # in kilometers
 
 
 # %% import custom functions
@@ -35,7 +36,7 @@ for i in range(0, num_rows-1, 2):
     # TLEs is thus a list of 'org.orekit.propagation.analytical.tle.TLE' objects
 
 # shortening TLE list for initial trials, updating num_rows
-TLEs = TLEs[1:100]
+TLEs = TLEs[1:50]
 num_rows = len(TLEs)*2
 
 
@@ -67,9 +68,6 @@ for j in range(0, (num_rows//2)-1, 1):
     current_TLE = TLEs[j]
     next_TLE = TLEs[j+1]
 
-    # Set the start and end date that is then used for the propagation in seconds
-    #extrapDate = AbsoluteDate(2002, 5, 7, 12, 0, 0.0, TimeScalesFactory.getUTC())
-    #finalDate = extrapDate.shiftedBy(60.0*60*24) #seconds
     extrapDate = current_TLE.getDate()
     finalDate = next_TLE.getDate() #seconds
 
@@ -86,28 +84,54 @@ for j in range(0, (num_rows//2)-1, 1):
         #print extrapDate, pos_tmp, vel_tmp
         extrapDate = extrapDate.shiftedBy(10.0)
 
+#Constants.WGS84_EARTH_EQUATORIAL_RADIUS
 
+'''
 # %% Plot Results
 plt.plot(el)
 plt.ylim(0,90)
 plt.title('Elevation')
 plt.grid(True)
 plt.show()
+'''
 
 
-# Create a figure and a 3D axis
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+
+
+
+# Create a new Mayavi figure
+fig = mlab.figure()
+
+# %% Plot the Earth surface
+image_file = 'datafiles/blue_marble.jpg'
+# load and map the texture
+img = tvtk.JPEGReader()
+img.file_name = image_file
+texture = tvtk.Texture(input_connection=img.output_port, interpolate=1)
+# (interpolate for a less raster appearance when zoomed in)
+# use a TexturedSphereSource, a.k.a. getting our hands dirty
+Nrad = 180
+# create the sphere source with a given radius and angular resolution
+sphere = tvtk.TexturedSphereSource(radius = earth_radius, theta_resolution=Nrad, phi_resolution=Nrad)
+# assemble rest of the pipeline, assign texture
+sphere_mapper = tvtk.PolyDataMapper(input_connection=sphere.output_port)
+sphere_actor = tvtk.Actor(mapper=sphere_mapper, texture=texture)
+fig.scene.add_actor(sphere_actor)
+
+# %% Plot the orbit
 # extract position data
-x = [point[0] for point in pos]
-y = [point[1] for point in pos]
-z = [point[2] for point in pos]
-# Plot the data
-ax.scatter(x, y, z)
-# Set labels and title
-ax.set_xlabel('X Label')
-ax.set_ylabel('Y Label')
-ax.set_zlabel('Z Label')
-ax.set_title('3D Scatter Plot')
-# Show plot
-plt.show()
+x_orbit = [point[0] for point in pos]
+y_orbit = [point[1] for point in pos]
+z_orbit = [point[2] for point in pos]
+
+# Generate scalar values for each point on the line
+scalar_values = np.linspace(0, 1, len(x_orbit))  # Example: Linearly varying scalar values from 0 to 1
+
+line = mlab.plot3d(x_orbit, y_orbit, z_orbit, color = (1,0,0), tube_radius = None)
+
+# Add a colorbar to the plot
+#colorbar = mlab.colorbar()
+
+
+# Display the plot
+mlab.show()
