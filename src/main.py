@@ -1,6 +1,7 @@
 
 from math import radians, pi
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 # %% initialize Orekit : start up the java engine and expose the orekit classes in python.
 import orekit
@@ -33,21 +34,13 @@ for i in range(0, num_rows-1, 2):
     TLEs.append(TLE(lines[i],lines[i+1]))
     # TLEs is thus a list of 'org.orekit.propagation.analytical.tle.TLE' objects
 
+# shortening TLE list for initial trials, updating num_rows
+TLEs = TLEs[1:100]
+num_rows = len(TLEs)*2
 
 
 
 
-
-# %% Setting up the TLEs
-
-#SPOT-5
-tle_line1 = "1 27421U 02021A   02124.48976499 -.00021470  00000-0 -89879-2 0    20"
-tle_line2 = "2 27421  98.7490 199.5121 0001333 133.9522 226.1918 14.26113993    62"
-
-mytle = TLE(tle_line1,tle_line2)
-
-print (mytle)
-print ('Epoch :',mytle.getDate())
 
 # %% Preparing Co-ordinate system
 ITRF = FramesFactory.getITRF(IERSConventions.IERS_2010, True)
@@ -99,4 +92,22 @@ plt.plot(el)
 plt.ylim(0,90)
 plt.title('Elevation')
 plt.grid(True)
+plt.show()
+
+
+# Create a figure and a 3D axis
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+# extract position data
+x = [point[0] for point in pos]
+y = [point[1] for point in pos]
+z = [point[2] for point in pos]
+# Plot the data
+ax.scatter(x, y, z)
+# Set labels and title
+ax.set_xlabel('X Label')
+ax.set_ylabel('Y Label')
+ax.set_zlabel('Z Label')
+ax.set_title('3D Scatter Plot')
+# Show plot
 plt.show()
