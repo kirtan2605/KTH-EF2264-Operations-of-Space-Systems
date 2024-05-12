@@ -48,8 +48,8 @@ for i in range(0, num_rows-1, 2):
     # TLEs is thus a list of 'org.orekit.propagation.analytical.tle.TLE' objects
 
 # shortening TLE list for initial trials, updating num_rows
-#TLEs = TLEs[1:5]
-#num_rows = len(TLEs)*2
+TLEs = TLEs[1:5]
+num_rows = len(TLEs)*2
 
 # %% SECTION 1 : Propagate MATS TLEs, get elevation and plot orbit over time
 
@@ -96,7 +96,7 @@ for j in range(0, (num_rows//2)-1, 1):
         date.append(absolutedate_to_datetime(extrapDate))
         extrapDate = extrapDate.shiftedBy(10.0)
 
-#Constants.WGS84_EARTH_EQUATORIAL_RADIUS
+Constants.WGS84_EARTH_EQUATORIAL_RADIUS# in meters
 
 
 
