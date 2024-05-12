@@ -3,8 +3,6 @@ import os
 import numpy as np
 from math import radians, pi, floor
 import matplotlib.pyplot as plt
-#from mayavi import mlab
-#from tvtk.api import tvtk # python wrappers for the C++ vtk ecosystem
 
 # %% initialize Orekit : start up the java engine and expose the orekit classes in python.
 import orekit
