@@ -114,7 +114,7 @@ plt.show()
 fig = mlab.figure()
 
 # %% Plot the Earth surface
-image_file = 'datafiles/blue_marble.jpg'
+image_file = 'datafiles/images/blue_marble.jpg'
 # load and map the texture
 img = tvtk.JPEGReader()
 img.file_name = image_file
