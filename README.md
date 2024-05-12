@@ -35,4 +35,6 @@ The positions of the satellites from a 2023-01-01T00:00:00 to 2023-01-31T00:00:0
 ### Mathematical Formulation
 The analysis has been simplified by assuming the Earth to be a sphere of constant radius equal to the WGS84_EARTH_EQUATORIAL_RADIUS. The mathematical formulation is based on the below presented diagram.
 
-![GitHub Logo](https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/images/Mathematical_Formulation.png)
+<p align="center">
+  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/images/Mathematical_Formulation.png">
+</p>
