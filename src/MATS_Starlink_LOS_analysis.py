@@ -1,8 +1,8 @@
 import numpy as np
-from math import radians, pi
+from math import radians, pi, floor
 import matplotlib.pyplot as plt
-#from mayavi import mlab
-#from tvtk.api import tvtk # python wrappers for the C++ vtk ecosystem
+from mayavi import mlab
+from tvtk.api import tvtk # python wrappers for the C++ vtk ecosystem
 
 # %% initialize Orekit : start up the java engine and expose the orekit classes in python.
 import orekit
@@ -22,13 +22,26 @@ earth_radius = Constants.WGS84_EARTH_EQUATORIAL_RADIUS  # in kilometers
 
 
 # %% import custom functions
-from MATS_datareader import  MATS_TLEs_txt_file_parse
 from other_functions import *
+
+def absolutedate_to_datetime(orekit_absolutedate):
+    ''' Converts between orekit.AbsoluteDate objects
+    and python datetime objects (utc)'''
+
+    utc = TimeScalesFactory.getUTC()
+    or_comp = orekit_absolutedate.getComponents(utc)
+    or_date = or_comp.getDate()
+    or_time = or_comp.getTime()
+    seconds = or_time.getSecond()
+    # returns string YYYY-MM-DD_HH:MM:SS
+    return f"{str(or_date.getYear())}-{str(or_date.getMonth())}-{str(or_date.getDay())}T{str(or_time.getHour())}:{str(or_time.getMinute())}:{str(int(floor(seconds)))}"
 
 
 # %% Preprocessing MATS TLEs
 MATS_TLEs_file_path = 'datafiles/sat000054227.txt'
-lines = MATS_TLEs_txt_file_parse(MATS_TLEs_file_path)
+MATS_TLEs_file_path = 'datafiles/StarlinkData-2023/44713.txt'
+
+lines = txt_file_parse(MATS_TLEs_file_path)
 num_rows = get_dimensions(lines)[0]
 TLEs = []
 for i in range(0, num_rows-1, 2):
@@ -36,8 +49,8 @@ for i in range(0, num_rows-1, 2):
     # TLEs is thus a list of 'org.orekit.propagation.analytical.tle.TLE' objects
 
 # shortening TLE list for initial trials, updating num_rows
-TLEs = TLEs[1:5]
-num_rows = len(TLEs)*2
+#TLEs = TLEs[1:5]
+#num_rows = len(TLEs)*2
 
 # %% SECTION 1 : Propagate MATS TLEs, get elevation and plot orbit over time
 
@@ -83,3 +96,5 @@ for j in range(0, (num_rows//2)-1, 1):
         #print extrapDate, pos_tmp, vel_tmp
         date.append(absolutedate_to_datetime(extrapDate))
         extrapDate = extrapDate.shiftedBy(10.0)
+
+#Constants.WGS84_EARTH_EQUATORIAL_RADIUS
