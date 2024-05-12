@@ -22,7 +22,6 @@ earth_radius = Constants.WGS84_EARTH_EQUATORIAL_RADIUS  # in kilometers
 
 
 # %% import custom functions
-from MATS_datareader import  MATS_TLEs_txt_file_parse
 from other_functions import *
 
 def absolutedate_to_datetime(orekit_absolutedate):
@@ -40,7 +39,8 @@ def absolutedate_to_datetime(orekit_absolutedate):
 
 # %% Preprocessing MATS TLEs
 MATS_TLEs_file_path = 'datafiles/sat000054227.txt'
-lines = MATS_TLEs_txt_file_parse(MATS_TLEs_file_path)
+
+lines = txt_file_parse(MATS_TLEs_file_path)
 num_rows = get_dimensions(lines)[0]
 TLEs = []
 for i in range(0, num_rows-1, 2):
@@ -48,8 +48,8 @@ for i in range(0, num_rows-1, 2):
     # TLEs is thus a list of 'org.orekit.propagation.analytical.tle.TLE' objects
 
 # shortening TLE list for initial trials, updating num_rows
-TLEs = TLEs[1:5]
-num_rows = len(TLEs)*2
+#TLEs = TLEs[1:5]
+#num_rows = len(TLEs)*2
 
 # %% SECTION 1 : Propagate MATS TLEs, get elevation and plot orbit over time
 
@@ -109,7 +109,7 @@ plt.grid(True)
 plt.show()
 
 
-'''
+
 # Create a new Mayavi figure
 fig = mlab.figure()
 
@@ -139,4 +139,3 @@ line = mlab.plot3d(x_orbit, y_orbit, z_orbit, color = (1,0,0), tube_radius = Non
 
 # Display the plot
 mlab.show()
-'''
