@@ -48,9 +48,5 @@ Thus, if d >= R_adjusted (7970km), then the two satellites are in line-of-sight 
 \begin{equation}
 |d| = \sqrt{ |r_1|^2 - \frac{ (|d_{12}|^2 + |r_1|^2 - |r_2|^2)^2 }{4 |d_{12}|^2}}
 \end{equation}
-<<<<<<< HEAD
-
 
 The MATS_Starlink_LineOfSight_Analysis.py file calculates this and stores a boolean numpy array in the LOS_visibility_data.txt file based on the visibility. This is then presented in MATS_Starlink_LineOfSight_Results.py.
-=======
->>>>>>> 6e5fde965cd1811010b33ae519820ea5ceb169db
