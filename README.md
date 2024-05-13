@@ -52,6 +52,10 @@ $$
 The MATS_Starlink_LineOfSight_Analysis.py file calculates this and stores a boolean numpy array in the LOS_visibility_data.txt file based on the visibility. This is then presented in MATS_Starlink_LineOfSight_Results.py.
 
 ### Results
+
+
+
 <p align="center">
-  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/waterfall_plot.png">
+  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/waterfall_plot.png" alt="Image 1" style="width:45%; float:left; margin-right:5%">
+  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/waterfall_plot.png" alt="Image 2" style="width:45%; float:left;">
 </p>
