@@ -54,7 +54,13 @@ The MATS_Starlink_LineOfSight_Analysis.py file calculates this and stores a bool
 ### Results
 The Line-Of-Sight results saved as boolean values illustrate the variation of satellite visibility over time for the MATS satellite. These results even illustrate how many satellites are visible at a given time. It must be noted that these results are obtained using threshold analysis for a pre-defined threshold, which is $R_{adjusted}$.
 <p align="center">
-  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/waterfall_plot.png" alt="Image 1" style="width:auto; height:400px; float:left; margin-right:10%">
-  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/numVisibleSats.png" alt="Image 2" style="width:auto; height:400px; float:left; margin-left:10%"">
+  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/waterfall_plot.png" alt="Image 1" style="width:400px; height:auto; float:left;">
   <div style="clear:both; margin-bottom:20px;"></div>
 </p>
+
+<p align="center">
+  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/numVisibleSats.png" alt="Image 2" style="width:400px; height:auto; float:left;">
+  <div style="clear:both; margin-bottom:20px;"></div>
+</p>
+
+
