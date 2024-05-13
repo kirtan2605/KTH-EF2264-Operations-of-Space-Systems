@@ -39,11 +39,11 @@ The analysis has been simplified by assuming the Earth to be a sphere of constan
   <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/images/Mathematical_Formulation.png">
 </p>
 
-Thus, if $d > R_earth$, then the two satellites are in line-of-sight and hence can see each other.
+Thus, if $d > R_{earth}$, then the two satellites are in line-of-sight and hence can see each other.
 
 For a more realistic formulation, a percentage padding can be added to compensate for elements which hinder visibility. The highest clouds (Noctilucent clouds) are at an altitude of 80km. Hence, with the WGS84_EARTH_EQUATORIAL_RADIUS = 6378137 m i.e $\approx$ 6378 km, the 80km padding corresponds to a 1.25\%  padding. Hence, let the adjusted radius of sphere $R_{adjusted}$ $\approx$ 7,970 km.
 
-Thus, if $d >= R_adjusted$ (7970km), then the two satellites are in line-of-sight and hence can see each other.
+Thus, if $d >= R_{adjusted}$ (7970km), then the two satellites are in line-of-sight and hence can see each other.
 
 $$
 |d| = \sqrt{ |r_1|^2 - \frac{ (|d_{12}|^2 + |r_1|^2 - |r_2|^2)^2 }{4 |d_{12}|^2}}
