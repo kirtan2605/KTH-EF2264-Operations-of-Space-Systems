@@ -45,8 +45,8 @@ For a more realistic formulation, a percentage padding can be added to compensat
 
 Thus, if d >= R_adjusted (7970km), then the two satellites are in line-of-sight and hence can see each other.
 
-\begin{equation}
+$$
 |d| = \sqrt{ |r_1|^2 - \frac{ (|d_{12}|^2 + |r_1|^2 - |r_2|^2)^2 }{4 |d_{12}|^2}}
-\end{equation}
+$$
 
 The MATS_Starlink_LineOfSight_Analysis.py file calculates this and stores a boolean numpy array in the LOS_visibility_data.txt file based on the visibility. This is then presented in MATS_Starlink_LineOfSight_Results.py.
