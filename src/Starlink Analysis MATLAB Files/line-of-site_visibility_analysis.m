@@ -46,7 +46,6 @@ c.TickLabels = {'Not Visible', 'Visible'};
 set(c,'YTickLabel', []);
 hYLabel = ylabel(c, 'Not Visible                          Visible');     
 set(hYLabel,'Rotation',90);
-%title(c, 'Color Map');
 
 % Specify y-axis ticks
 yticks(linspace(1, size(data.LOS_visibility_data, 1), 5)); % Evenly spaced ticks
@@ -74,8 +73,3 @@ grid on;
 grid minor
 ax=gca;
 ax.FontSize = 15;
-
-% Specify y-axis ticks
-% xticks(linspace(1, size(data.LOS_visibility_data, 1), 5)); % Evenly spaced ticks
-% xticklabels({'1 Jan', '8 Jan', '15 Jan', '22 Jan', '30 Jan'}); % Specify the labels for the ticks
-
