@@ -39,11 +39,11 @@ The analysis has been simplified by assuming the Earth to be a sphere of constan
   <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/images/Mathematical_Formulation.png">
 </p>
 
-Thus, if d > R_earth, then the two satellites are in line-of-sight and hence can see each other.
+Thus, if $d > R_earth$, then the two satellites are in line-of-sight and hence can see each other.
 
-For a more realistic formulation, a percentage padding can be added to compensate for elements which hinder visibility. The highest clouds (Noctilucent clouds) are at an altitude of 80km. Hence, with the WGS84_EARTH_EQUATORIAL_RADIUS = 6378137 m i.e $\approx$ 6378 km, the 80km padding corresponds to a 1.25\%  padding. Hence, let the adjusted radius of sphere R$_{adjusted}$ $\approx$ 7,970 km.
+For a more realistic formulation, a percentage padding can be added to compensate for elements which hinder visibility. The highest clouds (Noctilucent clouds) are at an altitude of 80km. Hence, with the WGS84_EARTH_EQUATORIAL_RADIUS = 6378137 m i.e $\approx$ 6378 km, the 80km padding corresponds to a 1.25\%  padding. Hence, let the adjusted radius of sphere $R_{adjusted}$ $\approx$ 7,970 km.
 
-Thus, if d >= R_adjusted (7970km), then the two satellites are in line-of-sight and hence can see each other.
+Thus, if $d >= R_adjusted$ (7970km), then the two satellites are in line-of-sight and hence can see each other.
 
 $$
 |d| = \sqrt{ |r_1|^2 - \frac{ (|d_{12}|^2 + |r_1|^2 - |r_2|^2)^2 }{4 |d_{12}|^2}}
@@ -52,7 +52,7 @@ $$
 The MATS_Starlink_LineOfSight_Analysis.py file calculates this and stores a boolean numpy array in the LOS_visibility_data.txt file based on the visibility. This is then presented in MATS_Starlink_LineOfSight_Results.py.
 
 ### Results
-
+The Line-Of-Sight results saved as boolean values illustrate the variation of satellite visibility over time for the MATS satellite. These results even illustrate how many satellites are visible at a given time. It must be noted that these results are obtained using threshold analysis for a pre-defined threshold, which is $R_{adjusted}$.
 <p align="center">
   <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/waterfall_plot.png" alt="Image 1" style="width:auto; height:400px; float:left; margin-right:10%">
   <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/numVisibleSats.png" alt="Image 2" style="width:auto; height:400px; float:left; margin-left:10%"">
