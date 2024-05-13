@@ -31,15 +31,9 @@ min_visibleSat_distance =  min(LOS_visible_distances, [], 2);
 % Plot the sums
 figure;
 plot(dateTimeVector, min_visibleSat_distance/1000, 'LineWidth', 2);
-%xlabel('Date');
 ylabel('Minimum Distance [km]');
-%xlim([]) % add limits to x
 title('Minimum Distance of Visible Starlink Satellite');
 grid on;
 grid minor
 ax=gca;
 ax.FontSize = 15;
-
-% Specify y-axis ticks
-% xticks(linspace(1, size(min_visibleSat_distance, 1), 5)); % Evenly spaced ticks
-% xticklabels({'1 Jan', '8 Jan', '15 Jan', '22 Jan', '30 Jan'}); % Specify the labels for the ticks
