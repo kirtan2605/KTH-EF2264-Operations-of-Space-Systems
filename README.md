@@ -62,4 +62,10 @@ The Line-Of-Sight results saved as boolean values illustrate the variation of sa
   <div style="clear:both; margin-bottom:200px;"></div>
 </p>
 
+https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/minimum_distance.png
 
+<p align="center">
+  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/minimum_distance.png" style="width:45%; height:300px; float:left;">
+  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/minimum_distance_zoom.png" style="width:45%; height:300px; float:left;">
+  <div style="clear:both; margin-bottom:200px;"></div>
+</p>
