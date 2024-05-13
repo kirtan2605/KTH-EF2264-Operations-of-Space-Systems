@@ -104,7 +104,7 @@ def propagate_TLE(TLE_filepath, timeStep):
     return pos
 
 # %% Preprocessing MATS TLEs
-MATS_TLEs_file_path = "datafiles/54227.txt"
+MATS_TLEs_file_path = "datafiles/MATS_Data/54227.txt"
 StarlinkData_folder_path = "datafiles/StarlinkData-2023"
 Starlink_TLEs_file_path = get_TLEfilepaths_in_folder(StarlinkData_folder_path)
 
@@ -139,7 +139,7 @@ array_length = int(seconds_diff/propagationStep_seconds) + 1
 print(beginAbsoluteDate)
 print(endAbsoluteDate)
 
-np.savetxt(f'datafiles/SatellitePositions-NumpyArray/MATS.txt', propagate_TLE(MATS_TLEs_file_path, propagationStep_seconds))
+np.savetxt(f'datafiles/MATS_Data/MATS.txt', propagate_TLE(MATS_TLEs_file_path, propagationStep_seconds))
 
 Starlink_pos_counter = 0
 for path in Starlink_TLEs_file_path:

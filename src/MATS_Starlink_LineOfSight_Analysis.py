@@ -78,7 +78,7 @@ for i in range(total_StarlinkSats):
     satDistance_magnitudes[:,i] = row_magnitudes(StarlinkSatellite_posArray)
     interSat_distances[:,i] = distance_between_points(StarlinkSatellite_posArray, MATS_posArray)
 
-
+np.savetxt(f'datafiles/results/interSat_distances_data.txt', interSat_distances)
 
 earth_radius = Constants.WGS84_EARTH_EQUATORIAL_RADIUS  # in kilometers
 visibility_padding_percentage = 1.25
