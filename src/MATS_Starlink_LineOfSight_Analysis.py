@@ -56,7 +56,7 @@ def threshold_array(arr, threshold):
     """
     return (arr > threshold).astype(int)
 
-MATS_position_path = "datafiles/MATS.txt"
+MATS_position_path = "datafiles/MATS_Data/MATS.txt"
 MATS_posArray = np.loadtxt(MATS_position_path)
 MATS_magnitudes = row_magnitudes(MATS_posArray)
 num_datapoints = len(MATS_magnitudes)
@@ -97,4 +97,4 @@ for i in range(total_StarlinkSats):
 
 
 LOS_visibility = threshold_array(d, adjusted_radius)
-np.savetxt(f'datafiles/LOS_visibility_data.txt', LOS_visibility)
+np.savetxt(f'datafiles/results/LOS_visibility_data.txt', LOS_visibility, fmt='%d')
