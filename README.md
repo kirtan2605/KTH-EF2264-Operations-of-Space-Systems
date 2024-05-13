@@ -54,7 +54,7 @@ The MATS_Starlink_LineOfSight_Analysis.py file calculates this and stores a bool
 ### Results
 
 <p align="center">
-  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/waterfall_plot.png" alt="Image 1" style="width:auto; height:200px; float:left; margin-right:10%">
-  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/numVisibleSats.png" alt="Image 2" style="width:auto; height:200px; float:left; margin-left:10%"">
+  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/waterfall_plot.png" alt="Image 1" style="width:auto; height:500px; float:left; margin-right:10%">
+  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/numVisibleSats.png" alt="Image 2" style="width:auto; height:500px; float:left; margin-left:10%"">
   <div style="clear:both; margin-bottom:20px;"></div>
 </p>
