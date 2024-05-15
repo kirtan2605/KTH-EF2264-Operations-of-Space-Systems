@@ -29,14 +29,9 @@ v_max = 1;
 levels = [v_min, v_max];
 
 % Plot the matrix
-imagesc(data.LOS_visibility_data);
+imagesc(data.LOS_visibility_data_v1);
 colormap(colors);
 caxis([v_min v_max]);
-
-% Create a custom color bar with ticks and tick labels
-cb = colorbar;
-set(cb, 'Ticks', levels);
-set(cb, 'TickLabels', {'Low', 'High'});
 
 % Create a custom colorbar
 c = colorbar;
@@ -46,9 +41,10 @@ c.TickLabels = {'Not Visible', 'Visible'};
 set(c,'YTickLabel', []);
 hYLabel = ylabel(c, 'Not Visible                          Visible');     
 set(hYLabel,'Rotation',90);
+%title(c, 'Color Map');
 
 % Specify y-axis ticks
-yticks(linspace(1, size(data.LOS_visibility_data, 1), 5)); % Evenly spaced ticks
+yticks(linspace(1, size(data.LOS_visibility_data_v1, 1), 5)); % Evenly spaced ticks
 yticklabels({'1 Jan', '8 Jan', '15 Jan', '22 Jan', '30 Jan'}); % Specify the labels for the ticks
 ax=gca;
 ax.FontSize = 15;
@@ -62,7 +58,7 @@ title('Starlink Satellite Line-of-Sight Visibility 2023');
 
 %% Number of visible satellites plot
 % Calculate the sum of elements in each row
-row_sums = sum(data.LOS_visibility_data, 2); % Dimension 2 represents summing along rows
+row_sums = sum(data.LOS_visibility_data_v1, 2); % Dimension 2 represents summing along rows
 
 % Plot the sums
 figure;
@@ -73,3 +69,8 @@ grid on;
 grid minor
 ax=gca;
 ax.FontSize = 15;
+
+% Specify y-axis ticks
+% xticks(linspace(1, size(data.LOS_visibility_data, 1), 5)); % Evenly spaced ticks
+% xticklabels({'1 Jan', '8 Jan', '15 Jan', '22 Jan', '30 Jan'}); % Specify the labels for the ticks
+
