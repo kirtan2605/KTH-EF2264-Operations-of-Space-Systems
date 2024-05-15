@@ -80,7 +80,7 @@ for i in range(total_StarlinkSats):
 
 np.savetxt(f'datafiles/results/interSat_distances_data.txt', interSat_distances)
 
-earth_radius = Constants.WGS84_EARTH_EQUATORIAL_RADIUS  # in kilometers?? CHECK.
+earth_radius = Constants.WGS84_EARTH_EQUATORIAL_RADIUS  # in meters
 visibility_padding_percentage = 1.25
 adjusted_radius = (1 + (visibility_padding_percentage/100))*earth_radius
 
