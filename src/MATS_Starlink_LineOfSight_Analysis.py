@@ -10,11 +10,12 @@ setup_orekit_curdir()
 from org.orekit.utils import Constants
 
 def get_Positions_filepaths_in_folder(folder_path):
-    filenames = []
-    for filename in os.listdir(folder_path):
-        if os.path.isfile(os.path.join(folder_path, filename)):
-            filenames.append(folder_path+"/"+filename)
-    return filenames
+    filepaths = []
+    for filename in sorted(os.listdir(folder_path)):
+        filepath = os.path.join(folder_path, filename)
+        if os.path.isfile(filepath):
+            filepaths.append(filepath)
+    return filepaths
 
 
 def row_magnitudes(arr):
