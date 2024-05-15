@@ -66,7 +66,6 @@ num_datapoints = len(MATS_magnitudes)
 Positions_folder_path = "datafiles/StarlinkPositions-NumpyArray"
 Positions_file_path = get_Positions_filepaths_in_folder(Positions_folder_path)
 total_StarlinkSats = len(Positions_file_path)
-#print(total_StarlinkSats)
 
 # initialize a numpy array which stores distance between MATS and Starlink Satellies
 interSat_distances = np.empty((num_datapoints, total_StarlinkSats))
