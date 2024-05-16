@@ -83,5 +83,5 @@ The results are seen more prominently using a heatmap to illustrate the variatio
 
 An instance of the evolution of Line-of-Sight visibility can be seen below.
 <p align="center">
-![Alt Text](https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/LineOfSight_animation.gif)
+  <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/LineOfSight_animation.gif">
 </p>
