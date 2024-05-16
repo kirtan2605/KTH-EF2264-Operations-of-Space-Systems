@@ -96,3 +96,5 @@ MATS microsatellite orbits on a circular, sun-synchronous orbit at an altitude o
   <p>Illustration of the MATS limb observation geometry. From an orbit altitude of 585 km, the vertical field of view of the limb instrument covers nominal tangent altitudes from 75 to 110 km. image credit: MATS collaboration</p>
 </div>
 
+Hence, the Starlink satellites in the field-of-view might affect the measurements taken by MATS. Further analysis could be aimed at determining the number of Starlink satellites in the field-of-view of MATS instead of the Line-Of-Sight.
+
