@@ -70,7 +70,7 @@ The results can even be used to analyse the extent of effect of the satellites o
   <div style="clear:both; margin-bottom:200px;"></div>
 </p>
 
-The results are seen more prominently using a heatmap to illustrate the variation of intersatellite distances.
+The results are seen more prominently using a heatmap to illustrate the variation of intersatellite distances. They also illustrate the different visibility windows as well as the the relative radial velocities between the satellites.
 <p align="center">
   <img src="src/datafiles/results/intersat_distances_heatmap.png" style="width:750px; height:auto; float:left;">
   <div style="clear:both; margin-bottom:200px;"></div>
