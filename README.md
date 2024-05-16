@@ -75,3 +75,8 @@ The results are seen more prominently using a heatmap to illustrate the variatio
   <img src="src/datafiles/results/intersat_distance_heatmap.png" style="width:750px; height:auto; float:left;">
   <div style="clear:both; margin-bottom:200px;"></div>
 </p>
+
+<p align="center">
+  <img src="src/datafiles/results/intersat_distance_heatmap_zoom.png" style="width:750px; height:auto; float:left;">
+  <div style="clear:both; margin-bottom:200px;"></div>
+</p>
