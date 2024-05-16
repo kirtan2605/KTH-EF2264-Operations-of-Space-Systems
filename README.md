@@ -86,7 +86,7 @@ An instance of the evolution of Line-of-Sight visibility can be seen below.
   <img src="https://github.com/kirtan2605/KTH-EF2264-Operations-of-Space-Systems/blob/master/src/datafiles/results/LineOfSight_animation.gif">
 </p>
 
-### Guidelines for future work
+# Guidelines for future work
 The MATS has a field of view of 6 degrees by 1 degrees pointing downward are the
 
 MATS microsatellite orbits on a circular, sun-synchronous orbit at an altitude of 585 km, and takes images from 75 to 110 km. This imager's FOV is $5.67^\circ$ $\times$ $0.91^\circ$, translating to a swath of 250 km $\times$ 40 km.
